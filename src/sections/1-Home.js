@@ -8,7 +8,8 @@ function Home(){
   <section className="Home" id="top">
    <div className="page-text">
     <h1>Muzikayise Khuzwayo</h1>
-    <h2>Professional Frontend Developer, Freelancer, All-Round Chilled Guy</h2>
+    <h2>Personal Brand Automation Systems Engineer, Grand Alchemist of the Guild</h2>
+    <h3>I'm a Builder, Thinker, and Strategist who leverages AI and Automation to help brands and businesses create scalable systems that grow their reach and maximise their success.</h3>
     <div className="socials">
      <a title="Download CV" href="#about-section"><FaFileDownload /></a>
      <a title="Visit Twitter" target="_blank" href="#about-section"><FaTwitter /></a>
@@ -19,7 +20,7 @@ function Home(){
     
     <div className="button">
      <a href="#profile-section">Find out More</a>
-     <a href="#contact-section">Hire Me Now!</a>
+     <a href="#contact-section">Get in Touch</a>
     </div>
    </div>
   </section>

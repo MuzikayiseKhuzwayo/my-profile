@@ -1,21 +1,25 @@
-/* Footer shit */
-.Footer{
- text-align: center;
- color: white;
- background: black;
- height: 100px;
+/* Footer Styles */
+footer {
+  background-color: #171F2B;
+  color: #f3f3f3;
+  text-align: center;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 8px;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.2);
 }
 
-.Footer .social{
- display: flex;
- align-items: center;
- justify-content: center;
+footer p {
+  margin: 0;
 }
 
-.Footer .social a{
- font-size: 30px;
- padding: 0px 30px 0px 30px;
- color: white;
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  footer {
+   padding: 15px;
+   margin-top: 10px;
+  }
+  footer p {
+   font-size: 0.9em;
+  }
 }
-
-

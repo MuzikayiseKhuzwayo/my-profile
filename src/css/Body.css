@@ -1,98 +1,220 @@
-/* This is CSS that will be used throughout the body */
-/* Colour schemes- #242038 dark purple, #9067C6 amethyst
-#E7CFCD pale pink, #D2AB99 Tumbleweed brown, #A31621 ruby red,
-#4E8098 teal blue, #87F1FF electric blue
-#8D86C9 middle blue purple, BAF2BB celadon, BAF2D8 Magic Mint
-*/
-
-/* Add animation for the Social links make them bigger on hover */
-.Home{
- height: 100vh;
- width: 100%;
- align-items: center;
- display: flex;
- align-items: center;
- justify-content: center;
- background: url(../images/home-cover.jpg);
- background-size: cover;
- background-repeat: no-repeat;
- background-attachment: fixed;
+/* General Styles */
+body {
+  font-family: sans-serif;
+  background-color: #10151D;
+  color: #f3f3f3;
+  margin: 0;
+  padding: 0;
 }
 
-.page-text{
- color: white;
+.page-text {
+  color: #f3f3f3;
 }
 
-.Home .page-text{
- width: 50%;
- text-align: center;
+.name {
+ color: white; /* Or a highlighted color from your palette */
 }
 
-.Home .page-text h1{
- font-size: 60px;
-}
-
-.Home .page-text .socials{
- margin-top: 50px;
-}
-
-.Home .page-text .button a {
- font-size: 20px;
- color: white;
- border: 2px solid white;
- font-weight: bolder;
- padding: 10px;
- margin: 10px;
- text-decoration: none;
- text-transform: uppercase;
-
-}
-
-.Home .page-text .socials a {
- font-size: 30px;
- color: white;
- font-weight: bolder;
- margin: 20px;
- text-decoration: none;
- transition: all 0.2s ease-in-out;
-}
-
-.Home .page-text .socials a:hover{
- font-size: 45px;
-}
-
-.Home .button{
- margin-top: 80px;
- align-content: space-between;
- justify-items: auto;
+/* Section Styles */
+.all-sections {
+  display: flex;
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #171F2B;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* Profile Section */
+#profile-section {
+ flex-direction: row; /* Default, adjust with media queries */
+ align-items: center;
+}
 
+.profile-image {
+  width: 200px;
+  margin-right: 20px;
+}
+
+.profile-image img {
+  width: 100%;
+  border-radius: 50%;
+  display: block;
+}
+
+.Profile > .container {
+ display: flex;
+ flex-direction: column;
+}
+
+.container-1 {
+ width: 25%;
+ border-right: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
+ padding-right: 20px;
+}
+
+.container-4 {
+ width: 75%;
+ padding-left: 20px;
+}
+
+/* Skills Section */
+#skills-section {
+ flex-direction: column; /* Stack skills vertically */
+}
+
+.skills-grid {
+ display: grid;
+ grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+ gap: 15px;
+}
+
+.skill-item {
+  background-color: #10151D;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Expertise Section */
+#expertise-section {
+ flex-direction: column;
+}
+
+.expertise-list {
+ list-style: none;
+ padding: 0;
+}
+
+.expertise-list li {
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #10151D;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Portfolio Section */
+#portfolio-section {
+ flex-direction: column;
+}
+
+.portfolio-grid {
+ display: grid;
+ grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+ gap: 20px;
+}
+
+.portfolio-item {
+  background-color: #10151D;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.portfolio-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.portfolio-item-details {
+  padding: 15px;
+}
+
+/* Contact Section */
+#contact-section {
+ flex-direction: column;
+}
+
+#contact-section form {
+ display: flex;
+ flex-direction: column;
+ max-width: 500px;
+ margin: 0 auto;
+}
+
+#contact-section label {
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+#contact-section input,
+#contact-section textarea {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: #10151D;
+  color: #f3f3f3;
+  border-radius: 4px;
+}
+
+#contact-section input[type="submit"] {
+  background-color: #171F2B;
+  color: #f3f3f3;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#contact-section input[type="submit"]:hover {
+  background-color: #10151D;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .all-sections {
+   width: 90%;
+   margin: 10px auto;
+   flex-direction: column;
+  }
+  .container-1,
+  .container-4 {
+   width: 100%;
+   border-right: none;
+   padding: 0;
+  }
+
+  .profile-image {
+   width: 70%;
+   margin: 0 auto 20px;
+  }
+
+  /* Specific adjustments for Profile section */
+  #profile-section {
+   align-items: stretch; /* Adjust alignment */
+  }
+
+  #profile-section .container {
+   flex-direction: column;
+  }
+}
+
+/* General text alignment */
 .Profile{
  text-align: left;
 }
 
-.all-sections{
- display: flex;
- border: 5px solid rgba(0, 0, 0, 0.05);
+/* Empty ruleset removed */
+
+/* Larger screens adjustments */
+@media (min-width: 769px) {
+  .all-sections {
+  max-width: 1200px;
+  margin: 0 auto;
+  }
 }
 
 .container {
+ margin: auto;
  justify-content: center;
  align-items: center;
- height: 60vh;
 }
 
 .container-1{
  width: 25%;
- display: flex;
- border-right: 2px solid white;
-}
-
-.container-2{
- width: 70%;
- display: flex;
+ border-right: 1px solid lightgray;
 }
 
 .container-3{
@@ -104,247 +226,30 @@
 }
 
 .container-5{
- width: 70%;
- display: flex;
-}
-
-.Profile .container {
  display: flex;
  align-content: center;
 }
 
-.Profile .profile-image{
- width: 50%;
-}
-
-/* SKILLS */
-
-/* Add some hover functionality that makes numbers in span count up on hover */
-.Skills .container-2{
- flex-flow: column nowrap;
- justify-content: center;
- align-items: center;
-}
-
-.Skills .skl-counter{
- text-align: center;
- width: 15%
-}
-
-.Skills .skl-counter h1{
- font-size: 60px;
-}
-
-.Skills .skl-counter .html{
- color: orange;
-}
-
-.Skills .skl-counter .js {
- color: yellow;
-}
-
-.Skills .skl-counter .css {
- color: rgb(67, 171, 236);
-}
-
-.Skills .skl-counter .python {
- color: blue;
-}
-
-.Skills .skl-counter .php {
- color: rgb(112, 96, 112);
-}
-
-.Skills .skl-counter .reactjs {
- color: lightseagreen;
-}
-
-.Skills .skl-counter .nodejs {
- color: black;
-}
-
-.Skills .skl-counter #cnt-html:hover{
- animation: cnt_html 2s linear;
-}
-
-@keyframes cnt_html{
- 0%{ 
-  content: "0"; 
+@media (max-width: 768px) {
+ .container-1,
+ .container-2,
+ .container-3,
+ .container-4,
+ .container-5 {
+  width: 100%;
+  border-right: none;
  }
 
- 5%{ 
-  content: "4";
+
+ .Profile .container {
+  flex-direction: column-reverse;
  }
 
- 10%{ 
-  content: "10";
- }
-
- 15% { 
-  content: "16";
- }
-
- 20% { 
-  content: "21";
- }
-
- 25% { 
-  content: "23";
- }
-
- 30% {
-  content: "29";
- }
-
- 35% {
-  content: "32";
- }
-
- 40% {
-  content: "37";
- }
-
- 45% {
-  content: "41";
- }
-
- 50% {
-  content: "49";
- }
-
- 55% {
-  content: "53";
- }
- 60% {
-  content: "56";
- }
-
- 65% {
-  content: "60";
- }
-
- 70% {
-  content: "63";
- }
-
- 75% {
-  content: "70";
- }
-
- 80% {
-  content: "72";
- }
-
- 85% {
-  content: "78";
- }
-
- 90% {
-  content: "81";
- }
-
- 95% {
-  content: "85";
- }
-
- 100% {
-  content: "89";
+ .Profile .container-4{
+  display:flex;
+  flex-direction: column;
  }
 }
 
-/* Expertise stuff */
 
-.Expertise .exp-list{
- line-height: 250%;
- list-style: none;
-}
 
-.Expertise .ico-col-1{
- color: #A31421;
-}
-.Expertise .ico-col-2 {
- color: #A32521;
-}
-.Expertise .ico-col-3 {
- color: #A33621;
-}
-.Expertise .ico-col-4 {
- color: #A34721;
-}
-.Expertise .ico-col-5 {
- color: #A35821;
-}
-.Expertise .ico-col-6 {
- color: #A36921;
-}
-.Expertise .ico-col-7 {
- color: #A37A21;
-}
-.Expertise .ico-col-8 {
- color: #A38B21;
-}
-
-/* Contact Section */
-
-.Contact{
- background: blueviolet;
-}
-
-.Contact .inner-container{
- width: 100%;
- display: flex;
- justify-content: center;
- align-items: center;
-}
-
-.Contact h3, h1{
- text-align: center;
-}
-
-.Contact input[type=text], textarea{
- width: 100%;
- height: 30px;
- padding: 12px 20px;
- margin: 10px 0;
- border-radius: 5px;
- box-sizing: border-box;
- border: 2px solid gray;
-}
-
-.Contact input[type=text]:focus{
- background: lightgray;
- border: 3px solid gray;
-}
-
-.Contact input[type=email]{
- width: 100%;
- height: 30px;
- padding: 12px 20px;
- margin: 10px 0;
- border-radius: 5px;
- box-sizing: border-box;
- border: 2px solid grey;
-}
-
-.Contact input[type=email]:focus{
- background: lightcyan;
- border: 3px solid gray;
-}
-
-.Contact #message{
- height: 150px;
- resize: vertical;
-}
-
-.Contact input[type=submit]{
- background-color: rgb(90, 25, 151);
- border: none;
- border-radius: 5px;
- color: white;
- padding: 10px 20px;
- text-decoration: none;
- cursor: pointer;
- width: 20%;
- float: right;
- margin: 4px 2px;
-}

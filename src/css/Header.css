@@ -1,61 +1,98 @@
-.Header {
-  display: flex;
-}
-
-.Nav{
-  height: auto;
-  width: 100%;
-  background: #282c34;
-  opacity: 0.7;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  display: flex;
-  overflow: hidden;
+/* Header Styles */
+header {
+  background-color: #171F2B;
+  color: #f3f3f3;
   padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.Nav a{
-  color: white;
+.logo {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+nav li {
+  margin-left: 20px;
+}
+
+nav a {
   text-decoration: none;
-  padding: 20px;
-  font-size: 30px;
+  color: #f3f3f3;
+  transition: color 0.3s ease;
 }
 
-/* Highlight active nav element as a box kind of thing. also change colour on hover */
-
-.Nav a:hover{
-  background: white;
-  color: black;
+nav a:hover {
+  color: #ddd;
 }
 
-.Nav a:active {
-  background: white;
-  color: black;
+/* Dropdown Menu Styles (for smaller screens) */
+.dropdown-container {
+  position: relative;
+  display: inline-block;
 }
 
-.Nav .nav-right {
+.dropdown-button {
+  background-color: transparent;
+  color: #f3f3f3;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown-content {
+  display: none;
   position: absolute;
-  left: 50%;
+  background-color: #10151D;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  right: 0; /* Position the dropdown to the right */
+  border-radius: 4px;
 }
 
+.dropdown-content a {
+  color: #f3f3f3;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
 
+.dropdown-content a:hover {
+  background-color: #171F2B;
+}
 
+.show {
+  display: block;
+}
 
-/* Add some animation in future if possible */
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  nav {
+   display: none; /* Hide the regular nav */
+  }
+  .dropdown-container {
+   display: block; /* Show the dropdown container */
+  }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+  header {
+   flex-direction: row;
+   justify-content: space-between;
   }
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+@media (min-width: 769px) {
+  .dropdown-container {
+   display: none; /* Hide dropdown on larger screens */
   }
 }
