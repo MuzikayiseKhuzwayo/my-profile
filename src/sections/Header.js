@@ -1,21 +1,20 @@
 import '../css/Header.css';
+import { Link } from 'react-router-dom';
 
-/* Header should have links to document stuff
-  Create those docs in seperate JS files and import them at the top.  */
 function Header() {
   return (
     <div className="Header">
       <header className="prf-header">
         <nav className="Nav">
           <div className="nav-logo">
-            <a className="active logo" href="#top">Muzikayise Khuzwayo</a>
+            <Link className="active logo" to="/">Muzikayise Khuzwayo</Link>
           </div>
           <div className="nav-right">
-            <a  href="#about-section">About Me</a>
-            <a  href="#passion-section">My Passions</a>
-            <a  href="#skills-section">My Skills</a>
-            <a  href="#projects-section">My Projects</a>
-            <a  href="#contact-section">Contact Me</a>
+            <Link to="/profile">About Me</Link>
+            <Link to="/skills">My Skills</Link>
+            <Link to="/expertise">My Expertise</Link>
+            <Link to="/portfolio">My Portfolio</Link>
+            <Link to="/contact">Contact Me</Link>
           </div>
         </nav>
       </header>
