@@ -64,7 +64,7 @@ const StatsCard = ({ title, revenue, description, icon, data, isActive = false }
                             itemStyle={{ color: '#f3f4f6' }}
                             labelStyle={{ color: '#9ca3af', marginBottom: '0.25rem' }}
                             cursor={{ stroke: '#fbbf24', strokeWidth: 1, strokeDasharray: '3 3' }}
-                            formatter={(value: number) => [`$${value.toLocaleString()}`, 'Revenue']}
+                            formatter={(value: number | string | undefined) => [`$${Number(value || 0).toLocaleString()}`, 'Revenue']}
                         />
                         <Area
                             type="monotone"
