@@ -1,4 +1,5 @@
 import ProfileCard from '@/components/ProfileCard';
+import ProjectsShowcase from '@/components/ProjectsShowcase';
 import StatsCard from '@/components/StatsCard';
 import MediaDispatches from '@/components/MediaDispatches';
 import { venturesList } from '@/data/profileData';
@@ -11,13 +12,16 @@ export default function Home() {
       </aside>
 
       <div className="mainContent">
-        {/* Section 1: Ventures & Live Projects */}
-        <section className="venturesSection">
+        {/* Section 1: Standout Public Projects & Open-Source Architectures */}
+        <ProjectsShowcase showHeroHeader={true} />
+
+        {/* Section 2: Ecosystem Ventures & Live Divisions */}
+        <section className="venturesSection" id="ventures">
           <div className="sectionHeader">
             <div>
-              <h2 className="sectionTitle">Ventures & Live Projects</h2>
+              <h2 className="sectionTitle">Ecosystem Ventures &amp; Divisions</h2>
               <p className="sectionSubtitle">
-                Real-time portfolio tracking verified earnings and growth across online businesses.
+                Modular divisions working in synergy across causal financial intelligence, AI business automation, and market analytics.
               </p>
             </div>
           </div>
@@ -29,7 +33,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Section 2: Hyper-Intentionalism & Systems Engineering */}
+        {/* Section 3: Hyper-Intentionalism & Systems Engineering */}
         <MediaDispatches />
       </div>
     </main>

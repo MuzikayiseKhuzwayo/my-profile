@@ -1,42 +1,81 @@
 'use client';
 
 import Image from 'next/image';
-import { MapPin, Wallet, Twitter, Youtube, Linkedin, Instagram } from 'lucide-react';
-import { profileInfo, venturesList } from '@/data/profileData';
+import {
+  MapPin,
+  Code2,
+  Twitter,
+  Youtube,
+  Linkedin,
+  Instagram,
+  Github,
+  Mail,
+  ArrowUpRight,
+} from 'lucide-react';
+import { profileInfo, projectsList, venturesList } from '@/data/profileData';
 
 export default function ProfileCard() {
-  const totalRevenue = venturesList.reduce((sum, v) => sum + v.revenueNumeric, 0);
-  const formattedRevenue = `$${(totalRevenue / 1000).toFixed(1)}k/month`;
-
   return (
     <div className="profileCard">
-      <div className="profileAvatarWrapper">
-        <Image
-          src={profileInfo.avatarUrl}
-          alt={profileInfo.name}
-          width={105}
-          height={105}
-          className="profileAvatar"
-          priority
-        />
+      <div className="profileTopRow">
+        <div className="profileAvatarWrapper">
+          <Image
+            src={profileInfo.avatarUrl}
+            alt={profileInfo.name}
+            width={105}
+            height={105}
+            className="profileAvatar"
+            priority
+          />
+        </div>
+        <span className="profileRolePill">{profileInfo.role}</span>
       </div>
 
-      <h1 className="profileName">{profileInfo.name}</h1>
+      <div>
+        <h1 className="profileName">{profileInfo.name}</h1>
+        <span className="profileHandle">{profileInfo.handle}</span>
+      </div>
 
       <div className="profileMeta">
         <div className="profileLocation">
-          <MapPin size={16} />
-          <span>{profileInfo.location.split(',')[0]}</span>
+          <MapPin size={15} />
+          <span>{profileInfo.location}</span>
         </div>
         <div className="profileIncome">
-          <Wallet size={16} />
-          <span>{formattedRevenue}</span>
+          <Code2 size={15} />
+          <span>{projectsList.length} Public Systems</span>
         </div>
       </div>
 
-      <p className="profileBio">
-        &ldquo;{profileInfo.bio}&rdquo;
-      </p>
+      <p className="profileBio">&ldquo;{profileInfo.bio}&rdquo;</p>
+
+      {/* Active Divisions Quick-Links */}
+      <div className="sidebarVenturesBox">
+        <span className="sidebarBoxLabel">Ecosystem Divisions</span>
+        <div className="sidebarVenturesList">
+          {venturesList.map((v) => (
+            <a
+              key={v.id}
+              href={v.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="sidebarVentureItem"
+            >
+              <div className="sidebarVentureLeft">
+                <span
+                  className="sidebarVentureDot"
+                  style={{ backgroundColor: v.accentColor }}
+                />
+                <span className="sidebarVentureName">{v.title}</span>
+              </div>
+              <span className="sidebarVentureUrl">
+                {v.displayUrl}
+                <ArrowUpRight size={12} />
+              </span>
+            </a>
+          ))}
+        </div>
+      </div>
 
       <div className="profileNewsletter">
         <strong>{profileInfo.newsletter.readers}</strong>
@@ -48,12 +87,20 @@ export default function ProfileCard() {
         >
           {profileInfo.newsletter.title}
         </a>
-        <p style={{ marginTop: '0.5rem', color: 'var(--text-secondary)' }}>
+        <p style={{ marginTop: '0.45rem', color: 'var(--text-secondary)' }}>
           {profileInfo.newsletter.description}
         </p>
       </div>
 
       <div className="profileSocials">
+        <a
+          href={profileInfo.githubUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          title="GitHub (@MuzikayiseKhuzwayo)"
+        >
+          <Github className="socialIcon" size={20} />
+        </a>
         <a
           href="https://x.com/3mk4y_"
           target="_blank"
@@ -79,12 +126,18 @@ export default function ProfileCard() {
           <Linkedin className="socialIcon" size={20} />
         </a>
         <a
-          href="https://www.instagram.com/3mk4y/"
+          href="https://www.instagram.com/3mk4y_/"
           target="_blank"
           rel="noopener noreferrer"
           title="Instagram"
         >
           <Instagram className="socialIcon" size={20} />
+        </a>
+        <a
+          href={`mailto:${profileInfo.email}`}
+          title="Email Muzi Khuzwayo"
+        >
+          <Mail className="socialIcon" size={20} />
         </a>
       </div>
 
