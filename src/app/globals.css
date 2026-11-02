@@ -1152,6 +1152,201 @@ a {
 }
 
 /* =========================================
+   Founder Page (/founder) & Sidebar Link
+   ========================================= */
+.founderStoryLinkBtn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.7rem 1rem;
+  border-radius: 12px;
+  background: rgba(251, 191, 36, 0.08);
+  border: 1px solid rgba(251, 191, 36, 0.25);
+  color: var(--highlight);
+  font-size: 0.84rem;
+  font-weight: 600;
+  transition: all 0.25s ease;
+}
+
+.founderStoryLinkBtn:hover {
+  background: rgba(251, 191, 36, 0.16);
+  border-color: var(--highlight);
+  transform: translateY(-1px);
+}
+
+.founderStoryArrow {
+  margin-left: auto;
+  transition: transform 0.2s ease;
+}
+
+.founderStoryLinkBtn:hover .founderStoryArrow {
+  transform: translate(2px, -2px);
+}
+
+.founderPageContainer {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 3.5rem 2rem 5rem;
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.founderGrid {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: 3.5rem;
+  width: 100%;
+  align-items: center;
+}
+
+.founderLeftCol {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.founderPortraitWrapper {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  width: 100%;
+  border-radius: 1.25rem;
+  overflow: hidden;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.6);
+}
+
+.founderPortraitImg {
+  object-fit: cover;
+  filter: grayscale(100%) contrast(1.25);
+}
+
+.founderPortraitGradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(2, 6, 23, 0.8) 0%, transparent 50%, transparent 100%);
+  pointer-events: none;
+}
+
+.founderSocialRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  align-items: center;
+}
+
+.founderSocialBtn {
+  width: 44px;
+  height: 44px;
+  border-radius: 9999px;
+  background: var(--card-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--card-border);
+  color: var(--text-secondary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s ease;
+}
+
+.founderSocialBtn:hover {
+  color: var(--text-primary);
+  border-color: rgba(255, 255, 255, 0.35);
+  transform: scale(1.08);
+}
+
+.founderRightCol {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.founderLabelRow {
+  margin-bottom: 0.5rem;
+}
+
+.founderLabel {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.founderNameHeading {
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  color: var(--text-primary);
+  margin-bottom: 2rem;
+  line-height: 1.15;
+}
+
+.founderContentBody {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  color: #cbd5e1;
+  line-height: 1.7;
+}
+
+.founderStorySection {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  font-size: 0.98rem;
+}
+
+.founderStoryTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.founderPhilosophyBox {
+  background: var(--card-bg);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--card-border);
+  border-left: 4px solid var(--highlight);
+  border-radius: 0.9rem;
+  padding: 1.5rem 1.75rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.founderQuoteWatermark {
+  position: absolute;
+  top: -0.5rem;
+  right: 1rem;
+  opacity: 0.06;
+  font-family: Georgia, serif;
+  font-size: 6rem;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.founderPhilosophyTitle {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+}
+
+.founderPhilosophyQuote {
+  font-style: italic;
+  color: var(--text-primary);
+  position: relative;
+  z-index: 2;
+  font-size: 0.96rem;
+}
+
+/* =========================================
    Responsive Breakpoints
    ========================================= */
 @media (max-width: 1140px) {
@@ -1160,6 +1355,15 @@ a {
     max-width: 860px;
     padding: 2.5rem 1.5rem;
     gap: 2.5rem;
+  }
+
+  .founderGrid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .founderPortraitWrapper {
+    max-width: 440px;
   }
 
   .sidebarWrapper {
@@ -1179,8 +1383,13 @@ a {
 
 @media (max-width: 680px) {
   .dashboardContainer,
-  .standaloneProjectsContainer {
+  .standaloneProjectsContainer,
+  .founderPageContainer {
     padding: 1.5rem 1rem;
+  }
+
+  .founderNameHeading {
+    font-size: 2.2rem;
   }
 
   .projectsHeroTitle {

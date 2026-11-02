@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import {
   MapPin,
   Code2,
@@ -11,6 +12,7 @@ import {
   Github,
   Mail,
   ArrowUpRight,
+  User,
 } from 'lucide-react';
 import { profileInfo, projectsList, venturesList } from '@/data/profileData';
 
@@ -48,6 +50,12 @@ export default function ProfileCard() {
       </div>
 
       <p className="profileBio">&ldquo;{profileInfo.bio}&rdquo;</p>
+
+      <Link href="/founder" className="founderStoryLinkBtn">
+        <User size={15} />
+        <span>Read My Story &amp; Philosophy</span>
+        <ArrowUpRight size={14} className="founderStoryArrow" />
+      </Link>
 
       {/* Active Divisions Quick-Links */}
       <div className="sidebarVenturesBox">
