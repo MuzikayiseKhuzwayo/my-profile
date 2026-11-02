@@ -1,6 +1,6 @@
 'use client';
 
-import { ExternalLink, Shield, Cpu, Zap, TrendingUp, CheckCircle2 } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { VentureDivision } from '@/data/profileData';
 
 interface StatsCardProps {
@@ -8,74 +8,38 @@ interface StatsCardProps {
 }
 
 export default function StatsCard({ venture }: StatsCardProps) {
-  const Icon =
-    venture.id === 'dubstrata'
-      ? Zap
-      : venture.id === 'techfusion-alchemy'
-        ? Cpu
-        : TrendingUp;
-
   return (
-    <div className="statsCard">
-      {/* Header */}
-      <div className="statsHeader">
-        <div className="statsTitleRow">
-          <div className="statsTitleTop">
-            <span
-              className="divisionIconBadge"
-              style={{
-                borderColor: `${venture.accentColor}40`,
-                color: venture.accentColor,
-              }}
+    <article className={`divisionCard ${venture.featured ? 'featured' : ''}`}>
+      <div className="divisionHeader">
+        <div className="divisionTitleGroup">
+          <div className="divisionTitleRow">
+            <h3 className="divisionTitle">{venture.title}</h3>
+            <a
+              href={venture.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="divisionDomainLink"
             >
-              <Icon size={18} />
-            </span>
-            <h3 className="statsTitle">{venture.title}</h3>
-            {venture.url && (
-              <a
-                href={venture.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="statsUrlLink"
-                title={`Visit ${venture.displayUrl}`}
-              >
-                <span>{venture.displayUrl}</span>
-                <ExternalLink size={12} />
-              </a>
-            )}
+              <kbd className="routeKeycap">{venture.displayUrl}</kbd>
+              <ArrowUpRight size={16} strokeWidth={1.5} />
+            </a>
           </div>
-          <span className="statsCategory">{venture.category}</span>
+          <span className="divisionCategory">{venture.category}</span>
         </div>
 
-        <div className="statsBadge">
-          {venture.status === 'Institutional' ? (
-            <span className="paymentBadgeIcon institutional">
-              <Shield size={10} />
-            </span>
-          ) : (
-            <span
-              className="livePulseDot"
-              style={{ backgroundColor: venture.accentColor }}
-            />
-          )}
-          <span className="revenueText">
-            {venture.status === 'Institutional' ? 'Institutional' : 'Live Division'}
-          </span>
-        </div>
+        <span className="divisionStatusMeta">{venture.status}</span>
       </div>
 
-      {/* Description */}
-      <p className="statsDescription">{venture.description}</p>
+      <p className="divisionDescription">{venture.description}</p>
 
-      {/* Highlights */}
-      <div className="divisionHighlights">
+      <ul className="divisionSpecsList">
         {venture.highlights.map((item, idx) => (
-          <div key={idx} className="divisionHighlightItem">
-            <CheckCircle2 size={14} style={{ color: venture.accentColor, flexShrink: 0 }} />
+          <li key={idx} className="divisionSpecRow">
+            <span className="specBullet" />
             <span>{item}</span>
-          </div>
+          </li>
         ))}
-      </div>
-    </div>
+      </ul>
+    </article>
   );
 }

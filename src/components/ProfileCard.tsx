@@ -2,161 +2,201 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import {
   MapPin,
-  Code2,
+  FolderGit2,
+  User,
+  Layers,
+  ArrowUpRight,
+  Github,
   Twitter,
   Youtube,
   Linkedin,
   Instagram,
-  Github,
   Mail,
-  ArrowUpRight,
-  User,
 } from 'lucide-react';
 import { profileInfo, projectsList, venturesList } from '@/data/profileData';
 
 export default function ProfileCard() {
+  const pathname = usePathname();
+
   return (
-    <div className="profileCard">
-      <div className="profileTopRow">
-        <div className="profileAvatarWrapper">
+    <div className="sidebarPanel">
+      {/* Identity Header */}
+      <div className="identityBlock">
+        <div className="avatarFrame">
           <Image
             src={profileInfo.avatarUrl}
             alt={profileInfo.name}
-            width={105}
-            height={105}
-            className="profileAvatar"
+            width={64}
+            height={64}
+            className="avatarImage"
             priority
           />
         </div>
-        <span className="profileRolePill">{profileInfo.role}</span>
-      </div>
-
-      <div>
-        <h1 className="profileName">{profileInfo.name}</h1>
-        <span className="profileHandle">{profileInfo.handle}</span>
-      </div>
-
-      <div className="profileMeta">
-        <div className="profileLocation">
-          <MapPin size={15} />
-          <span>{profileInfo.location}</span>
-        </div>
-        <div className="profileIncome">
-          <Code2 size={15} />
-          <span>{projectsList.length} Public Systems</span>
+        <div className="identityText">
+          <h1 className="sidebarName">{profileInfo.name}</h1>
+          <p className="sidebarRole">{profileInfo.role}</p>
         </div>
       </div>
 
-      <p className="profileBio">&ldquo;{profileInfo.bio}&rdquo;</p>
+      <p className="sidebarStatement">{profileInfo.bio}</p>
 
-      <Link href="/founder" className="founderStoryLinkBtn">
-        <User size={15} />
-        <span>Read My Story &amp; Philosophy</span>
-        <ArrowUpRight size={14} className="founderStoryArrow" />
-      </Link>
+      {/* Meta Rows (Aligned 16px icon column + 8px gap) */}
+      <div className="metaList">
+        <div className="metaRow">
+          <span className="iconCol">
+            <MapPin size={16} strokeWidth={1.5} />
+          </span>
+          <span className="metaLabel">{profileInfo.location}</span>
+        </div>
+        <div className="metaRow">
+          <span className="iconCol">
+            <FolderGit2 size={16} strokeWidth={1.5} />
+          </span>
+          <span className="metaLabel">
+            <span className="tabularNum">{projectsList.length}</span> public repositories
+          </span>
+        </div>
+      </div>
 
-      {/* Active Divisions Quick-Links */}
-      <div className="sidebarVenturesBox">
-        <span className="sidebarBoxLabel">Ecosystem Divisions</span>
-        <div className="sidebarVenturesList">
+      {/* Site Navigation (36px rows, 2px gap, 24px above / 8px below label) */}
+      <div className="sidebarGroup">
+        <span className="sidebarGroupLabel">Navigation</span>
+        <nav className="sidebarNav" aria-label="Primary navigation">
+          <Link
+            href="/"
+            className={`sidebarNavRow ${pathname === '/' ? 'active' : ''}`}
+          >
+            <span className="iconCol">
+              <Layers size={16} strokeWidth={1.5} />
+            </span>
+            <span className="navRowText">Overview</span>
+          </Link>
+          <Link
+            href="/projects"
+            className={`sidebarNavRow ${pathname === '/projects' ? 'active' : ''}`}
+          >
+            <span className="iconCol">
+              <FolderGit2 size={16} strokeWidth={1.5} />
+            </span>
+            <span className="navRowText">Projects &amp; systems</span>
+            <span className="navRowCount tabularNum">{projectsList.length}</span>
+          </Link>
+          <Link
+            href="/about"
+            className={`sidebarNavRow ${pathname === '/about' ? 'active' : ''}`}
+          >
+            <span className="iconCol">
+              <User size={16} strokeWidth={1.5} />
+            </span>
+            <span className="navRowText">About</span>
+          </Link>
+        </nav>
+      </div>
+
+      {/* Active Divisions */}
+      <div className="sidebarGroup">
+        <span className="sidebarGroupLabel">Ecosystem divisions</span>
+        <div className="sidebarNav">
           {venturesList.map((v) => (
             <a
               key={v.id}
               href={v.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="sidebarVentureItem"
+              className="sidebarNavRow"
             >
-              <div className="sidebarVentureLeft">
-                <span
-                  className="sidebarVentureDot"
-                  style={{ backgroundColor: v.accentColor }}
-                />
-                <span className="sidebarVentureName">{v.title}</span>
-              </div>
-              <span className="sidebarVentureUrl">
-                {v.displayUrl}
-                <ArrowUpRight size={12} />
-              </span>
+              <span className="navRowText">{v.title}</span>
+              <span className="navRowDomain">{v.displayUrl}</span>
             </a>
           ))}
         </div>
       </div>
 
-      <div className="profileNewsletter">
-        <strong>{profileInfo.newsletter.readers}</strong>
-        <a
-          href={profileInfo.newsletter.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="profileLink"
-        >
-          {profileInfo.newsletter.title}
-        </a>
-        <p style={{ marginTop: '0.45rem', color: 'var(--text-secondary)' }}>
-          {profileInfo.newsletter.description}
-        </p>
+      {/* Newsletter Block */}
+      <div className="sidebarGroup">
+        <span className="sidebarGroupLabel">Publication</span>
+        <div className="newsletterPanel">
+          <div className="newsletterHeader">
+            <span className="newsletterTitle">{profileInfo.newsletter.title}</span>
+            <span className="newsletterMeta tabularNum">{profileInfo.newsletter.readers}</span>
+          </div>
+          <p className="newsletterDesc">{profileInfo.newsletter.description}</p>
+          <a
+            href={profileInfo.newsletter.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="primaryActionBtn"
+          >
+            <span>Subscribe on Substack</span>
+            <ArrowUpRight size={16} strokeWidth={1.5} />
+          </a>
+        </div>
       </div>
 
-      <div className="profileSocials">
+      {/* Social Links */}
+      <div className="sidebarFooterSocials">
         <a
           href={profileInfo.githubUrl}
           target="_blank"
           rel="noopener noreferrer"
-          title="GitHub (@MuzikayiseKhuzwayo)"
+          className="socialIconBtn"
+          title="GitHub"
+          aria-label="GitHub"
         >
-          <Github className="socialIcon" size={20} />
+          <Github size={16} strokeWidth={1.5} />
         </a>
         <a
           href="https://x.com/3mk4y_"
           target="_blank"
           rel="noopener noreferrer"
+          className="socialIconBtn"
           title="X / Twitter"
+          aria-label="X / Twitter"
         >
-          <Twitter className="socialIcon" size={20} />
+          <Twitter size={16} strokeWidth={1.5} />
         </a>
         <a
           href="https://www.youtube.com/@MuziKhuzwayoSystems"
           target="_blank"
           rel="noopener noreferrer"
+          className="socialIconBtn"
           title="YouTube"
+          aria-label="YouTube"
         >
-          <Youtube className="socialIcon" size={20} />
+          <Youtube size={16} strokeWidth={1.5} />
         </a>
         <a
           href="https://www.linkedin.com/in/muzikayise-khuzwayo-121b43171/"
           target="_blank"
           rel="noopener noreferrer"
+          className="socialIconBtn"
           title="LinkedIn"
+          aria-label="LinkedIn"
         >
-          <Linkedin className="socialIcon" size={20} />
+          <Linkedin size={16} strokeWidth={1.5} />
         </a>
         <a
           href="https://www.instagram.com/3mk4y_/"
           target="_blank"
           rel="noopener noreferrer"
+          className="socialIconBtn"
           title="Instagram"
+          aria-label="Instagram"
         >
-          <Instagram className="socialIcon" size={20} />
+          <Instagram size={16} strokeWidth={1.5} />
         </a>
         <a
           href={`mailto:${profileInfo.email}`}
-          title="Email Muzi Khuzwayo"
+          className="socialIconBtn"
+          title="Email"
+          aria-label="Email"
         >
-          <Mail className="socialIcon" size={20} />
+          <Mail size={16} strokeWidth={1.5} />
         </a>
       </div>
-
-      <a
-        href={profileInfo.newsletter.url}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="ctaButton"
-      >
-        <span>Subscribe to Hyper-Intentionalism</span>
-      </a>
     </div>
   );
 }

@@ -1,6 +1,5 @@
 import { Metadata } from 'next';
-import Link from 'next/link';
-import { ArrowLeft } from 'lucide-react';
+import ProfileCard from '@/components/ProfileCard';
 import ProjectsShowcase from '@/components/ProjectsShowcase';
 
 export const metadata: Metadata = {
@@ -11,17 +10,14 @@ export const metadata: Metadata = {
 
 export default function ProjectsPage() {
   return (
-    <main className="standaloneProjectsContainer">
-      <div className="standaloneBreadcrumb">
-        <Link href="/" className="breadcrumbBackLink">
-          <ArrowLeft size={14} />
-          <span>Muzi Khuzwayo</span>
-        </Link>
-        <span className="breadcrumbSep">/</span>
-        <span className="breadcrumbCurrent">Open Source &amp; Research Portfolio</span>
-      </div>
+    <main className="appShell">
+      <aside className="sidebarColumn">
+        <ProfileCard />
+      </aside>
 
-      <ProjectsShowcase showHeroHeader={true} />
+      <div className="contentColumn">
+        <ProjectsShowcase showHeroHeader={true} />
+      </div>
     </main>
   );
 }
