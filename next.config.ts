@@ -5,20 +5,27 @@ const nextConfig: NextConfig = {
     unoptimized: true,
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'github.com',
+        protocol: "https",
+        hostname: "github.com",
       },
       {
-        protocol: 'https',
-        hostname: 'storage.googleapis.com',
+        protocol: "https",
+        hostname: "storage.googleapis.com",
       },
       {
-        protocol: 'https',
-        hostname: 'i.ytimg.com',
+        protocol: "https",
+        hostname: "**.ytimg.com",
+      },
+      {
+        protocol: "https",
+        hostname: "i.ytimg.com",
+      },
+      {
+        protocol: "https",
+        hostname: "**.substackcdn.com",
       },
     ],
   },
-  // @ts-ignore
   turbopack: {
     root: __dirname,
   },
